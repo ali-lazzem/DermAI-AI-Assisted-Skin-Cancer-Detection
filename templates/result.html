@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-6">
+        <div class="glass-card p-4 p-lg-5 text-center rounded-4 shadow-lg result-card">
+            <h2 class="mb-3 fw-bold">📋 Résultat du diagnostic</h2>
+            <div class="diagnostic-alert {% if result == 'Malin' %}alert-danger{% else %}alert-success{% endif %} p-4 rounded-4 mb-4">
+                <h4 class="fw-bold mb-2">Diagnostic : <span class="text-uppercase">{{ result }}</span></h4>
+                <p class="fs-3 fw-semibold mb-2">{{ prob }}% <span class="fs-6 text-muted">de confiance</span></p>
+                <div class="progress modern-progress mt-3">
+                    <div class="progress-bar animated-progress" id="confidenceBar" role="progressbar" style="width: 0%;" data-progress="{{ prob }}"></div>
+                </div>
+            </div>
+            <img src="{{ img_url }}" class="img-fluid rounded-4 shadow-lg mb-4 border" style="max-height: 280px; object-fit: contain;">
+            <div class="d-flex flex-wrap gap-3 justify-content-center">
+                <a href="/dashboard" class="btn btn-primary rounded-pill px-4">← Tableau de bord</a>
+                <a href="/predict" class="btn btn-outline-secondary rounded-pill px-4">Nouvelle analyse</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function() {
+        const bar = document.getElementById('confidenceBar');
+        if (bar) {
+            const target = parseFloat(bar.getAttribute('data-progress')) || 0;
+            setTimeout(() => {
+                bar.style.transition = 'width 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1)';
+                bar.style.width = target + '%';
+            }, 100);
+        }
+    })();
+</script>
+{% endblock %}

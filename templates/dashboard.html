@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="text-center mb-5">
+    <h1 class="display-5 fw-bold gradient-text">📊 Tableau de bord</h1>
+    {% if demo_mode %}
+    <div class="badge bg-warning text-dark mt-2 px-3 py-2 rounded-pill">⚠️ Mode démo (prédictions simulées)</div>
+    {% endif %}
+</div>
+<div class="row g-5 justify-content-center">
+    <div class="col-md-5">
+        <div class="glass-card modern-card p-5 text-center h-100 transition-card">
+            <div class="card-icon mb-3">➕</div>
+            <h3 class="fw-semibold">Nouvelle analyse</h3>
+            <p class="text-muted mt-2">Chargez une image de lésion pour un diagnostic IA instantané</p>
+            <a href="/predict" class="btn btn-primary btn-lg rounded-pill px-4 mt-3 shadow-sm">Commencer l'analyse →</a>
+        </div>
+    </div>
+    <div class="col-md-5">
+        <div class="glass-card modern-card p-5 text-center h-100 transition-card">
+            <div class="card-icon mb-3">📋</div>
+            <h3 class="fw-semibold">Historique patients</h3>
+            <p class="text-muted mt-2">Consultez et filtrez toutes les analyses précédentes</p>
+            <a href="/patients" class="btn btn-outline-secondary btn-lg rounded-pill px-4 mt-3">Voir l'historique →</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

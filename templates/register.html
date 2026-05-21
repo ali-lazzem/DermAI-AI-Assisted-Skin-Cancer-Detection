@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row justify-content-center align-items-center min-vh-75">
+    <div class="col-md-5">
+        <div class="glass-card p-5 shadow-lg rounded-4">
+            <div class="text-center mb-4">
+                <div class="auth-icon mb-3">📝</div>
+                <h2 class="fw-bold">Créer un compte</h2>
+                <p class="text-muted">Rejoignez DermAI et accédez aux analyses</p>
+            </div>
+            <form method="POST" id="registerForm">
+                <div class="mb-3">
+                    <label class="form-label fw-medium">Nom d'utilisateur</label>
+                    <input type="text" name="username" id="username" class="form-control form-control-lg rounded-3" placeholder="ex: docteur Dupont" required autofocus>
+                    <div class="invalid-feedback">Le nom d'utilisateur doit contenir au moins 3 caractères.</div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-medium">Mot de passe</label>
+                    <input type="password" name="password" id="password" class="form-control form-control-lg rounded-3" placeholder="••••••" required>
+                    <div class="invalid-feedback">Le mot de passe doit contenir au moins 4 caractères.</div>
+                </div>
+                <div class="mb-4">
+                    <label class="form-label fw-medium">Confirmer le mot de passe</label>
+                    <input type="password" name="confirm_password" id="confirmPassword" class="form-control form-control-lg rounded-3" placeholder="••••••" required>
+                    <div class="invalid-feedback">Les mots de passe ne correspondent pas.</div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg w-100 rounded-pill fw-semibold">S'inscrire →</button>
+            </form>
+            <div class="text-center mt-4 small">
+                Déjà un compte ? <a href="/" class="text-decoration-none fw-semibold">Connectez-vous</a>
+            </div>
+            <div class="text-center mt-3 text-muted small border-top pt-3">
+                🔒 Vos données sont sécurisées
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Client-side validation for registration form
+    document.getElementById('registerForm')?.addEventListener('submit', function(e) {
+        const username = document.getElementById('username');
+        const password = document.getElementById('password');
+        const confirm = document.getElementById('confirmPassword');
+        let isValid = true;
+
+        // Username validation (min 3 chars)
+        if (username.value.trim().length < 3) {
+            username.classList.add('is-invalid');
+            isValid = false;
+        } else {
+            username.classList.remove('is-invalid');
+        }
+
+        // Password validation (min 4 chars)
+        if (password.value.length < 4) {
+            password.classList.add('is-invalid');
+            isValid = false;
+        } else {
+            password.classList.remove('is-invalid');
+        }
+
+        // Password match validation
+        if (password.value !== confirm.value) {
+            confirm.classList.add('is-invalid');
+            isValid = false;
+        } else {
+            confirm.classList.remove('is-invalid');
+        }
+
+        if (!isValid) {
+            e.preventDefault();
+        }
+    });
+
+    // Remove invalid class on input
+    document.getElementById('username')?.addEventListener('input', function() {
+        if (this.value.trim().length >= 3) this.classList.remove('is-invalid');
+    });
+    document.getElementById('password')?.addEventListener('input', function() {
+        if (this.value.length >= 4) this.classList.remove('is-invalid');
+    });
+    document.getElementById('confirmPassword')?.addEventListener('input', function() {
+        const pwd = document.getElementById('password').value;
+        if (this.value === pwd) this.classList.remove('is-invalid');
+    });
+</script>
+{% endblock %}

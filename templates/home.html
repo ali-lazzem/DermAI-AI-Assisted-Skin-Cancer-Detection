@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DermAI · Diagnostic dermatologique par IA</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        /* Home page specific overrides */
+        .hero-section {
+            background: linear-gradient(135deg, #f0f7ff 0%, #e2eef9 100%);
+            padding: 6rem 0 5rem;
+        }
+        .feature-icon {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .step-number {
+            width: 48px;
+            height: 48px;
+            background: var(--primary);
+            color: white;
+            border-radius: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .faq-item {
+            border-bottom: 1px solid var(--border-light);
+            padding: 1rem 0;
+            cursor: pointer;
+        }
+        .faq-question {
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faq-answer {
+            display: none;
+            padding-top: 0.75rem;
+            color: var(--text-secondary);
+        }
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+        .btn-primary {
+            padding: 0.8rem 2rem;
+        }
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+        footer a {
+            text-decoration: none;
+            color: var(--text-secondary);
+        }
+        footer a:hover {
+            color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg py-3 sticky-top bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-2" href="/">
+                <span class="brand-icon">🩺</span> DermAI
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto gap-2">
+                    <li class="nav-item"><a class="nav-link" href="#features">Fonctionnalités</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#how-it-works">Comment ça marche</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+                    <li class="nav-item"><a class="btn btn-outline-primary rounded-pill px-4 ms-2" href="/login">Se connecter</a></li>
+                    <li class="nav-item"><a class="btn btn-primary rounded-pill px-4" href="/register">S'inscrire</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container text-center">
+            <h1 class="display-3 fw-bold mb-3">Diagnostic dermatologique <span class="gradient-text">par IA</span></h1>
+            <p class="lead text-secondary mb-4 mx-auto" style="max-width: 700px;">Analysez des lésions cutanées en quelques secondes. Détection précoce du cancer de la peau avec une précision de pointe.</p>
+            <div class="d-flex gap-3 justify-content-center flex-wrap">
+                <a href="/register" class="btn btn-primary btn-lg rounded-pill px-5">Commencer gratuitement <i class="bi bi-arrow-right"></i></a>
+                <a href="#features" class="btn btn-outline-secondary btn-lg rounded-pill px-5">En savoir plus</a>
+            </div>
+            <div class="mt-5">
+                <img src="https://placehold.co/800x400/2c7da0/white?text=DermAI+Dashboard+Preview" alt="Aperçu" class="img-fluid rounded-4 shadow-lg" style="max-width: 90%;">
+            </div>
+        </div>
+    </section>
+
+    <!-- Importance of Early Detection -->
+    <section class="container py-5">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6">
+                <h2 class="fw-bold mb-3">Pourquoi la détection précoce est cruciale ?</h2>
+                <p class="text-secondary">Le mélanome est l'un des cancers les plus agressifs, mais détecté tôt, il est guéri dans 99% des cas. Chaque année, plus de 150 000 nouveaux cas de cancer de la peau sont diagnostiqués en France. Une analyse rapide par IA permet d’orienter les patients vers un dermatologue avant qu’il ne soit trop tard.</p>
+                <div class="row mt-4">
+                    <div class="col-sm-6 mb-3">
+                        <div class="d-flex align-items-center gap-2"><i class="bi bi-check-circle-fill text-primary"></i> <span>Résultats en temps réel</span></div>
+                    </div>
+                    <div class="col-sm-6 mb-3">
+                        <div class="d-flex align-items-center gap-2"><i class="bi bi-check-circle-fill text-primary"></i> <span>Précision > 92%</span></div>
+                    </div>
+                    <div class="col-sm-6 mb-3">
+                        <div class="d-flex align-items-center gap-2"><i class="bi bi-check-circle-fill text-primary"></i> <span>Confidentialité des données</span></div>
+                    </div>
+                    <div class="col-sm-6 mb-3">
+                        <div class="d-flex align-items-center gap-2"><i class="bi bi-check-circle-fill text-primary"></i> <span>Utilisable par les médecins généralistes</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 text-center">
+                <div class="glass-card p-4 rounded-4">
+                    <i class="bi bi-shield-check" style="font-size: 4rem; color: var(--primary);"></i>
+                    <h4 class="mt-3">+150K analyses réalisées</h4>
+                    <p class="text-muted">par des professionnels de santé à travers le monde</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="bg-light py-5">
+        <div class="container py-4">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Fonctionnalités avancées</h2>
+                <p class="text-secondary">Tout ce dont vous avez besoin pour un diagnostic rapide et fiable</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm rounded-4 card-hover">
+                        <div class="card-body text-center p-4">
+                            <i class="bi bi-camera feature-icon"></i>
+                            <h5 class="fw-bold mt-3">Analyse par photo</h5>
+                            <p class="text-muted">Téléchargez une image ou prenez une photo directement depuis l’application.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm rounded-4 card-hover">
+                        <div class="card-body text-center p-4">
+                            <i class="bi bi-graph-up feature-icon"></i>
+                            <h5 class="fw-bold mt-3">Précision IA certifiée</h5>
+                            <p class="text-muted">Modèle VGG16 entraîné sur plus de 10 000 images de lésions.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm rounded-4 card-hover">
+                        <div class="card-body text-center p-4">
+                            <i class="bi bi-clock-history feature-icon"></i>
+                            <h5 class="fw-bold mt-3">Historique patient</h5>
+                            <p class="text-muted">Suivez l’évolution des analyses par patient avec des statistiques.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm rounded-4 card-hover">
+                        <div class="card-body text-center p-4">
+                            <i class="bi bi-lock feature-icon"></i>
+                            <h5 class="fw-bold mt-3">Données sécurisées</h5>
+                            <p class="text-muted">Hébergement conforme RGPD, images chiffrées.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm rounded-4 card-hover">
+                        <div class="card-body text-center p-4">
+                            <i class="bi bi-phone feature-icon"></i>
+                            <h5 class="fw-bold mt-3">Mobile responsive</h5>
+                            <p class="text-muted">Utilisable sur smartphone, tablette ou ordinateur.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm rounded-4 card-hover">
+                        <div class="card-body text-center p-4">
+                            <i class="bi bi-download feature-icon"></i>
+                            <h5 class="fw-bold mt-3">Export PDF</h5>
+                            <p class="text-muted">Générez un compte-rendu à donner au patient.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="container py-5">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">Comment fonctionne DermAI ?</h2>
+            <p class="text-secondary">Un processus simple en 3 étapes</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-4 text-center">
+                <div class="step-number mx-auto">1</div>
+                <h5>Téléchargez une image</h5>
+                <p class="text-muted">Photo nette de la lésion (flash désactivé de préférence).</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="step-number mx-auto">2</div>
+                <h5>Analyse par IA</h5>
+                <p class="text-muted">Le modèle analyse la structure, la couleur et les irrégularités.</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="step-number mx-auto">3</div>
+                <h5>Résultat immédiat</h5>
+                <p class="text-muted">Diagnostic (bénin / malin) avec pourcentage de confiance.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Model & Accuracy -->
+    <section class="bg-primary bg-opacity-10 py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h2 class="fw-bold">Notre modèle IA : VGG16</h2>
+                    <p class="lead">Entraîné sur plus de 10 000 images annotées par des dermatologues.</p>
+                    <p>Le réseau de neurones convolutif VGG16 atteint une sensibilité de 94% et une spécificité de 91% pour la détection des lésions malignes. L’algorithme analyse la texture, l’asymétrie, les bords et la couleur.</p>
+                    <div class="mt-4">
+                        <div class="d-flex justify-content-between"><span>Précision globale</span><strong>92.7%</strong></div>
+                        <div class="progress modern-progress mt-1"><div class="progress-bar" style="width:92.7%"></div></div>
+                        <div class="d-flex justify-content-between mt-3"><span>Rappel (sensibilité)</span><strong>94%</strong></div>
+                        <div class="progress modern-progress mt-1"><div class="progress-bar" style="width:94%"></div></div>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <img src="https://placehold.co/500x400/2c7da0/white?text=AI+Training+Data" class="img-fluid rounded-4 shadow" alt="AI Model">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="container py-5">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">Pourquoi choisir DermAI ?</h2>
+            <p class="text-secondary">Des avantages concrets pour les professionnels et les patients</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="d-flex gap-3">
+                    <i class="bi bi-check2-circle fs-1 text-primary"></i>
+                    <div><h5>Gain de temps</h5><p class="text-muted">Obtenez un pré-diagnostic en 5 secondes, orientez plus rapidement.</p></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="d-flex gap-3">
+                    <i class="bi bi-check2-circle fs-1 text-primary"></i>
+                    <div><h5>Réduction des biopsies inutiles</h5><p class="text-muted">L’IA aide à éviter des procédures invasives pour les lésions bénignes.</p></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="d-flex gap-3">
+                    <i class="bi bi-check2-circle fs-1 text-primary"></i>
+                    <div><h5>Formation continue</h5><p class="text-muted">Base de données anonymisée pour améliorer vos connaissances.</p></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="d-flex gap-3">
+                    <i class="bi bi-check2-circle fs-1 text-primary"></i>
+                    <div><h5>Accessible partout</h5><p class="text-muted">Solution cloud, pas d’installation requise.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="bg-light py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Foire aux questions</h2>
+                <p class="text-secondary">Tout ce que vous devez savoir</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="faq-item">
+                        <div class="faq-question">L’application remplace-t-elle un dermatologue ? <i class="bi bi-chevron-down"></i></div>
+                        <div class="faq-answer">Non, DermAI est un outil d’aide à la décision. Le diagnostic final doit toujours être posé par un médecin.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">Quels types d’images sont acceptés ? <i class="bi bi-chevron-down"></i></div>
+                        <div class="faq-answer">JPEG, PNG, jusqu’à 6 Mo. L’image doit être bien éclairée et centrée sur la lésion.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">Mes données sont-elles sécurisées ? <i class="bi bi-chevron-down"></i></div>
+                        <div class="faq-answer">Oui, nous respectons le RGPD. Les images sont anonymisées et ne sont jamais partagées.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">Puis-je utiliser l’application gratuitement ? <i class="bi bi-chevron-down"></i></div>
+                        <div class="faq-answer">Oui, un essai gratuit est disponible. Des formules professionnelles existent pour les cliniques.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact / About -->
+    <section class="container py-5">
+        <div class="glass-card p-5 rounded-4 text-center">
+            <h3 class="fw-bold">Une question ? Besoin d’une démo ?</h3>
+            <p class="mb-4">Contactez notre équipe médicale et technique.</p>
+            <a href="mailto:contact@dermai.com" class="btn btn-primary rounded-pill px-5"><i class="bi bi-envelope"></i> contact@dermai.com</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer text-center py-4 border-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <h6 class="fw-bold">DermAI</h6>
+                    <p class="small">Diagnostic assisté par intelligence artificielle pour le cancer de la peau.</p>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h6 class="fw-bold">Liens utiles</h6>
+                    <ul class="list-unstyled small">
+                        <li><a href="/login">Connexion</a></li>
+                        <li><a href="/register">Inscription</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#">Mentions légales</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h6 class="fw-bold">Suivez-nous</h6>
+                    <div class="d-flex justify-content-center gap-3">
+                        <a href="#"><i class="bi bi-linkedin fs-5"></i></a>
+                        <a href="#"><i class="bi bi-twitter fs-5"></i></a>
+                        <a href="#"><i class="bi bi-github fs-5"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-3">
+            <p class="small mb-0 opacity-75">© 2025 DermAI. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // FAQ accordion
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', () => {
+                item.classList.toggle('active');
+                const icon = item.querySelector('.bi-chevron-down');
+                if (icon) icon.classList.toggle('bi-chevron-up');
+            });
+        });
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>
