@@ -153,51 +153,6 @@ dermai/
 
 ---
 
-## How to Add the Screenshots
-
-To make the images display correctly in your README, follow these steps:
-
-### Option A: Store images in the repository (recommended)
-
-1. **Create a `screenshots/` folder** in your project root:
-   ```bash
-   mkdir screenshots
-   ```
-
-2. **Copy your image files** into that folder with these exact names:
-   - `home.png` — Landing page
-   - `login.png` — Login form
-   - `register.png` — Registration form
-   - `main.png` — Dashboard
-   - `analyse.png` — New analysis / upload form
-   - `history.png` — Patient history table
-
-3. **Commit and push** to GitHub:
-   ```bash
-   git add screenshots/
-   git commit -m "Add UI screenshots to README"
-   git push origin main
-   ```
-
-> The README uses relative paths (`screenshots/home.png`), so GitHub will render them automatically once pushed.
-
-### Option B: Use GitHub's image hosting (drag & drop)
-
-1. Open your repository on GitHub.
-2. Navigate to **Issues → New Issue** (you don't need to submit it).
-3. Drag and drop each image into the issue comment box.
-4. GitHub will upload the image and give you a direct URL like:
-   ```
-   https://user-images.githubusercontent.com/12345678/xxxxxxxxx/home.png
-   ```
-5. Copy those URLs and replace the relative paths in the README with the full URLs.
-
-### Option C: Use an external image host
-
-Upload the images to any image hosting service (Imgur, Cloudinary, etc.) and replace the paths in the README with the direct image URLs.
-
----
-
 ## Usage Flow
 
 1. **Landing Page** (`/`) — Public page presenting the product, features, FAQ, and contact info.  
