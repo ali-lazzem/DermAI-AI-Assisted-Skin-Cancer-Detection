@@ -1,4 +1,4 @@
-# 🩺 DermAI — AI-Assisted Skin Cancer Detection
+#  DermAI — AI-Assisted Skin Cancer Detection
 
 [![Python](https://img.shields.io/badge/Python-3.9%2B-blue)](https://www.python.org/)
 [![Flask](https://img.shields.io/badge/Flask-2.3.2-black)](https://flask.palletsprojects.com/)
@@ -9,7 +9,7 @@
 
 ---
 
-## 📸 Screenshots
+##  Screenshots
 
 | Page | Preview |
 |------|---------|
@@ -22,16 +22,16 @@
 
 ---
 
-## ✨ Features
+##  Features
 
-- 🔬 **AI-Powered Analysis** — VGG16 CNN trained on thousands of annotated skin-lesion images  
-- 📸 **Image Upload** — Drag-and-drop or click-to-upload with live preview (JPEG/PNG, max 6 MB)  
-- 📊 **Dashboard** — Clean overview to start a new analysis or browse history  
-- 📋 **Patient History** — Searchable table of past diagnoses with confidence bars and thumbnails  
-- 🔐 **Authentication** — Secure login / registration system with form validation  
-- 📱 **Responsive UI** — Fully mobile-friendly, light-themed glass-morphism interface  
-- ⚡ **Real-time Feedback** — Animated confidence progress bars and flash notifications  
-- 🗃️ **MySQL Database** — Persistent storage for users and patient records  
+-  **AI-Powered Analysis** — VGG16 CNN trained on thousands of annotated skin-lesion images  
+-  **Image Upload** — Drag-and-drop or click-to-upload with live preview (JPEG/PNG, max 6 MB)  
+-  **Dashboard** — Clean overview to start a new analysis or browse history  
+-  **Patient History** — Searchable table of past diagnoses with confidence bars and thumbnails  
+-  **Authentication** — Secure login / registration system with form validation  
+-  **Responsive UI** — Fully mobile-friendly, light-themed glass-morphism interface  
+-  **Real-time Feedback** — Animated confidence progress bars and flash notifications  
+-  **MySQL Database** — Persistent storage for users and patient records  
 
 ---
 
@@ -47,7 +47,7 @@
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### 1. Clone the repository
 
@@ -110,7 +110,7 @@ Open your browser at: **http://127.0.0.1:5000**
 
 ---
 
-## 🔑 Demo Credentials
+## Demo Credentials
 
 | Username | Password |
 |----------|----------|
@@ -120,7 +120,7 @@ Use these to log in and explore the dashboard immediately after setup.
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 dermai/
@@ -153,7 +153,7 @@ dermai/
 
 ---
 
-## 🖼️ How to Add the Screenshots
+## How to Add the Screenshots
 
 To make the images display correctly in your README, follow these steps:
 
@@ -198,7 +198,7 @@ Upload the images to any image hosting service (Imgur, Cloudinary, etc.) and rep
 
 ---
 
-## 🎯 Usage Flow
+## Usage Flow
 
 1. **Landing Page** (`/`) — Public page presenting the product, features, FAQ, and contact info.  
 2. **Login / Register** (`/login`, `/register`) — Create an account or sign in.  
@@ -209,13 +209,13 @@ Upload the images to any image hosting service (Imgur, Cloudinary, etc.) and rep
 
 ---
 
-## ⚠️ Medical Disclaimer
+## Medical Disclaimer
 
 **DermAI is an educational and research tool.** It is **not** a certified medical device and must **not** be used as a substitute for professional dermatological diagnosis. Always consult a qualified healthcare provider for medical advice.
 
 ---
 
-## 📝 Environment Variables (Optional)
+## Environment Variables (Optional)
 
 For production, consider extracting sensitive values into environment variables:
 
@@ -232,7 +232,7 @@ Then update `app.py` to read from `os.environ` instead of hard-coded strings.
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Feel free to open issues or submit pull requests for:
 
@@ -244,13 +244,7 @@ Contributions are welcome! Feel free to open issues or submit pull requests for:
 
 ---
 
-## 📄 License
-
-This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
-
----
-
-## 🙏 Acknowledgements
+## Acknowledgements
 
 - [TensorFlow](https://tensorflow.org/) & [Keras](https://keras.io/) for the deep-learning framework  
 - [Bootstrap](https://getbootstrap.com/) for the responsive UI components  
@@ -260,6 +254,6 @@ This project is licensed under the **MIT License** — see the [LICENSE](LICENSE
 ---
 
 <p align="center">
-  <b>Made with ❤️ for better healthcare diagnostics.</b><br>
+  <b>Made with love for better healthcare diagnostics.</b><br>
   <i>© 2025 DermAI</i>
 </p>
