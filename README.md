@@ -170,7 +170,7 @@ dermai/
 
 ---
 
-## Environment Variables (Optional)
+## Environment Variables
 
 For production, consider extracting sensitive values into environment variables:
 
@@ -184,27 +184,6 @@ export DB_NAME="skin_cancer_db"
 ```
 
 Then update `app.py` to read from `os.environ` instead of hard-coded strings.
-
----
-
-## Contributing
-
-Contributions are welcome! Feel free to open issues or submit pull requests for:
-
-- Additional model architectures (ResNet, EfficientNet, etc.)
-- Docker support
-- REST API endpoints
-- Multi-language support
-- Enhanced image preprocessing (data augmentation, segmentation)
-
----
-
-## Acknowledgements
-
-- [TensorFlow](https://tensorflow.org/) & [Keras](https://keras.io/) for the deep-learning framework  
-- [Bootstrap](https://getbootstrap.com/) for the responsive UI components  
-- [Inter](https://rsms.me/inter/) font family by Rasmus Andersson  
-- Skin-lesion datasets: [HAM10000](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/DB86F2), [ISIC Archive](https://challenge.isic-archive.com/)
 
 ---
 
